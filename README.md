@@ -1,5 +1,5 @@
 # My MEAN Blog 
-Installation
+## Installation
 
 Create a mongo database my-blog
 
