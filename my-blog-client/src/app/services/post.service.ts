@@ -25,10 +25,19 @@ export class PostService {
     return this.http.post<Post>(this.postsUrl, post);
   }
 
+  getPost(_id: string): Observable<Post> {
+    const url = `${this.postsUrl}/${_id}`;
+    return this.http.get<Post>(url);
+  }  
+
   updatePost(post: Post): Observable<Post> {
     const url = `${this.postsUrl}/${post._id}`;
     return this.http.put<Post>(url, post);
   }
+
+  // updatePost(id: string, updatedPost: Post): Observable<Post> {
+  //   return this.http.put<Post>(`${this.postsUrl}/${id}`, updatedPost);
+  // }
 
   deletePost(post: Post): Observable<Post> {
     const url = `${this.postsUrl}/${post._id}`;

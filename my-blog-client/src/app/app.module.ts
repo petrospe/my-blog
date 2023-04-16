@@ -10,13 +10,15 @@ import { FormsModule } from '@angular/forms';
 
 import { PostService } from './services/post.service';
 import { CreatePostComponent } from './components/create-post/create-post.component';
+import { EditPostComponent } from './components/edit-post/edit-post.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PostListComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    EditPostComponent
   ],
   imports: [
     BrowserModule,
