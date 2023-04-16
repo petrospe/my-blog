@@ -16,7 +16,7 @@ export class EditPostComponent implements OnInit {
   constructor(private postService: PostService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('_id') as string;
+    const id = this.route.snapshot.paramMap.get('id') as string;
     this.postService.getPost(id).subscribe(
       (post: Post) => {
         this.post = post;

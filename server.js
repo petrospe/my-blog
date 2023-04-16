@@ -45,6 +45,20 @@ app.post('/api/posts', (req, res) => {
     });
 });
 
+app.get('/api/posts/:id', (req, res) => {
+  Post.findById(req.params.id)
+    .then(post => {
+      if (!post) {
+        return res.status(404).json({ message: 'Post not found' });
+      }
+      res.json(post);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ message: 'Internal server error' });
+    });
+});
+
 app.put('/api/posts/:id', (req, res) => {
   Post.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, post) => {
     if (err) return console.error(err);
