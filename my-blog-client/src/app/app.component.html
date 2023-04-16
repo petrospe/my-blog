@@ -1,0 +1,11 @@
+<!-- app.component.html -->
+
+<h1>My Blog</h1>
+
+<nav>
+  <a [routerLink]="['/']">Home</a>
+  <a [routerLink]="['/posts']">Posts</a>
+  <a [routerLink]="['/posts/create']">Create a new post</a>
+</nav>
+
+<router-outlet></router-outlet>

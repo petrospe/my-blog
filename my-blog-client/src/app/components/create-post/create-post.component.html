@@ -1,0 +1,13 @@
+<h2>Create Post</h2>
+
+<form (submit)="onSubmit({ title: title, content: content })">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input [(ngModel)]="title" type="text" name="title" class="form-control" placeholder="Enter post title">
+  </div>
+  <div class="form-group">
+    <label for="content">Content</label>
+    <textarea [(ngModel)]="content" name="content" class="form-control" placeholder="Enter post content" ></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
