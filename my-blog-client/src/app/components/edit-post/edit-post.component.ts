@@ -9,11 +9,13 @@ import { Post } from '../../models/post.model';
   styleUrls: ['./edit-post.component.css']
 })
 export class EditPostComponent implements OnInit {
-  post!: Post;
+  post: Post;
   errorMessage!: string;
 
 
-  constructor(private postService: PostService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private postService: PostService, private route: ActivatedRoute, private router: Router) { 
+    this.post = {} as Post;
+  }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id') as string;
@@ -27,14 +29,17 @@ export class EditPostComponent implements OnInit {
     );
   }
 
-  onSubmit(): void {
+  onSubmit() {
     this.postService.updatePost(this.post).subscribe(
-      () => {
-        this.router.navigate(['/posts']);
+      (updatedPost: Post) => {
+        console.log("Post updated successfully:", updatedPost);
+        this.router.navigate(['/posts', this.post._id]);
       },
       (error: any) => {
+        console.error("Error updating post:", error);
         this.errorMessage = error.message;
       }
     );
   }
+  
 }

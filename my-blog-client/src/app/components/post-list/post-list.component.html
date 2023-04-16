@@ -1,6 +1,6 @@
 <div *ngFor="let post of posts">
     <h2>{{ post.title }}</h2>
     <p>{{ post.content }}</p>
-    <a [routerLink]="['/posts', post._id, 'edit']">Edit</a>
+    <a [routerLink]="['/posts', post._id]">Edit</a>
   </div>
   

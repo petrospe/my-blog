@@ -60,10 +60,14 @@ app.get('/api/posts/:id', (req, res) => {
 });
 
 app.put('/api/posts/:id', (req, res) => {
-  Post.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, post) => {
-    if (err) return console.error(err);
-    res.json(post);
-  });
+  const id = req.params.id;
+  const updatedPost = {
+    title: req.body.title,
+    content: req.body.content
+  };
+  Post.findByIdAndUpdate(id, updatedPost, { new: true })
+    .then(post => res.json(post))
+    .catch(err => console.log(err));
 });
 
 app.delete('/api/posts/:id', (req, res) => {

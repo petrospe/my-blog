@@ -8,11 +8,11 @@ const routes: Routes = [
   { path: '', redirectTo: '/posts', pathMatch: 'full' },
   { path: 'posts', component: PostListComponent },
   { path: 'posts/create', component: CreatePostComponent },
-  { path: 'posts/:id/edit', component: EditPostComponent },
+  { path: 'posts/:id', component: EditPostComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
