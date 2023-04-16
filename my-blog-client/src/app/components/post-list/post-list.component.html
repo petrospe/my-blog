@@ -1,6 +1,7 @@
-<div *ngFor="let post of posts">
-    <h2>{{ post.title }}</h2>
-    <p>{{ post.content }}</p>
-    <a [routerLink]="['/posts', post._id, 'edit']">Edit</a>
-  </div>
-  
+<mat-list>
+  <mat-list-item *ngFor="let post of posts">
+    <h3 mat-line><a [routerLink]="['/posts', post._id, 'edit']">{{ post.title }}</a></h3>
+    <p mat-line>{{ post.content }}</p>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>

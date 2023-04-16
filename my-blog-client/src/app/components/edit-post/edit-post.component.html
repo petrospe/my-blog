@@ -1,11 +1,27 @@
-<form (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="title">Title</label>
-    <input type="text" class="form-control" id="title" [ngModel]="post.title" (ngModelChange)="post.title = $event" name="title">
-  </div>
-  <div class="form-group">
-    <label for="content">Content</label>
-    <textarea class="form-control" id="content" [ngModel]="post.content" (ngModelChange)="post.content = $event" name="content"></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary">Save</button>
-</form>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Edit Post</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form (ngSubmit)="onSubmit()" class="edit-form">
+      <p>
+        <mat-form-field class="edit-full-width">
+          <mat-label>Title</mat-label>
+          <input matInput type="text" placeholder="Title" [(ngModel)]="post.title" name="title" required>
+          <mat-error>Title is required.</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="edit-full-width">
+          <mat-label>Content</mat-label>
+          <textarea matInput rows="5" placeholder="Content" [(ngModel)]="post.content" name="content" required></textarea>
+          <mat-error>Content is required.</mat-error>
+        </mat-form-field>
+      </p>
+      <div class="text-danger">{{ errorMessage }}</div>
+      <div class="d-flex justify-content-end">
+        <button mat-raised-button color="primary" type="submit">Save</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,13 +1,16 @@
-<h2>Create Post</h2>
-
-<form (submit)="onSubmit({ title: title, content: content })">
-  <div class="form-group">
-    <label for="title">Title</label>
-    <input [(ngModel)]="title" type="text" name="title" class="form-control" placeholder="Enter post title">
-  </div>
-  <div class="form-group">
-    <label for="content">Content</label>
-    <textarea [(ngModel)]="content" name="content" class="form-control" placeholder="Enter post content" ></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Create a New Post</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form (submit)="onSubmit({ title: title, content: content })" class="create-form">
+      <mat-form-field class="create-full-width">
+        <input matInput [(ngModel)]="title" type="text" name="title" placeholder="Enter post title" required>
+      </mat-form-field>
+      <mat-form-field class="create-full-width">
+        <textarea matInput [(ngModel)]="content" name="content" placeholder="Enter post content" required></textarea>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Create Post</button>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -35,10 +35,6 @@ export class PostService {
     return this.http.put<Post>(url, post);
   }
 
-  // updatePost(id: string, updatedPost: Post): Observable<Post> {
-  //   return this.http.put<Post>(`${this.postsUrl}/${id}`, updatedPost);
-  // }
-
   deletePost(post: Post): Observable<Post> {
     const url = `${this.postsUrl}/${post._id}`;
     return this.http.delete<Post>(url);
