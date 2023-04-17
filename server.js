@@ -31,8 +31,8 @@ app.get('/api/posts', (req, res) => {
 
 app.post('/api/posts', (req, res) => {
   const post = new Post({
-    title: req.title,
-    content: req.content
+    title: req.body.title,
+    content: req.body.content
   });
   post.save()
     .then(() => {
@@ -71,10 +71,15 @@ app.put('/api/posts/:id', (req, res) => {
 });
 
 app.delete('/api/posts/:id', (req, res) => {
-  Post.findByIdAndDelete(req.params.id, (err, post) => {
-    if (err) return console.error(err);
-    res.json(post);
-  });
+  Post.deleteOne({ _id: req.params.id })
+    .then(() => {
+      console.log('Post deleted successfully');
+      res.status(200).json({ message: 'Post deleted' });
+    })
+    .catch((error) => {
+      console.error('Error deleting post: ', error);
+      res.status(500).json({ error: 'Error deleting post' });
+    });
 });
 
 app.listen(port, () => {
