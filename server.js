@@ -18,7 +18,9 @@ db.once('open', function() {
 
 const postSchema = new mongoose.Schema({
   title: String,
-  content: String
+  content: String,
+  createdAt: Date,
+  updatedAt: Date
 });
 
 const Post = mongoose.model('Post', postSchema);
@@ -32,7 +34,9 @@ app.get('/api/posts', (req, res) => {
 app.post('/api/posts', (req, res) => {
   const post = new Post({
     title: req.body.title,
-    content: req.body.content
+    content: req.body.content,
+    createdAt: new Date(),
+    updatedAt: new Date()
   });
   post.save()
     .then(() => {
@@ -63,7 +67,8 @@ app.put('/api/posts/:id', (req, res) => {
   const id = req.params.id;
   const updatedPost = {
     title: req.body.title,
-    content: req.body.content
+    content: req.body.content,
+    updatedAt: new Date()
   };
   Post.findByIdAndUpdate(id, updatedPost, { new: true })
     .then(post => res.json(post))
