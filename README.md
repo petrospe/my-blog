@@ -1,4 +1,5 @@
 # My MEAN Blog 
+Blog based in MongoDB, Express, Angular and Node
 ## Installation
 
 Create a mongo database my-blog
