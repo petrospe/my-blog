@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../models/post.model';
 
@@ -11,7 +12,7 @@ export class CreatePostComponent implements OnInit {
   title: string = "";
   content: string = "";
 
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -24,6 +25,7 @@ export class CreatePostComponent implements OnInit {
 
     this.postService.createPost(newPost).subscribe(() => {
       console.log('Post created!');
+      this.router.navigate(['/']);
     });
   }
   

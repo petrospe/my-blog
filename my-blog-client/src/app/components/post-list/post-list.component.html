@@ -1,8 +1,41 @@
-<mat-list>
-  <mat-list-item *ngFor="let post of posts">
-    <h3 mat-line><a [routerLink]="['/posts', post._id, 'edit']">{{ post.title }}</a></h3>
-    <p mat-line>{{ post.content }}</p>
-    <button mat-raised-button color="warn" (click)="onDelete(post._id)">Delete</button>
-    <mat-divider></mat-divider>
-  </mat-list-item>
-</mat-list>
+<mat-card *ngFor="let post of posts" class="mb-3">
+  <mat-card-header>
+    <mat-card-title>{{ post.title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        <mat-icon mat-list-icon>description</mat-icon>
+        <h3 mat-line>Content</h3>
+        <p *ngIf="!post.expanded" mat-line>{{ post.content | truncate }}</p>
+      </mat-list-item>
+    </mat-list>
+    <p *ngIf="post.expanded" class="expanded-post">{{ post.content }}</p>
+    <mat-list>
+      <mat-list-item>
+        <mat-icon mat-list-icon>date_range</mat-icon>
+        <h3 mat-line>Created On</h3>
+        <p mat-line>{{ post.createdAt | date:'medium' }}</p>
+      </mat-list-item>
+      <mat-list-item >
+        <mat-icon mat-list-icon>update</mat-icon>
+        <h3 mat-line>Last Updated On</h3>
+        <p mat-line>{{ post.updatedAt | date:'medium' }}</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" [routerLink]="['/posts', post._id, 'edit']">
+      <mat-icon>edit</mat-icon>
+      <span>Edit</span>
+    </button>
+    <button mat-raised-button color="warn" (click)="onDelete(post._id)">
+      <mat-icon>delete</mat-icon>
+      <span>Delete</span>
+    </button>
+    <button mat-raised-button color="accent" (click)="onToggleExpanded(post)">
+      <mat-icon>{{ post.expanded ? 'expand_less' : 'expand_more' }}</mat-icon>
+      <span>{{ post.expanded ? 'Show Less' : 'Show More' }}</span>
+    </button>
+  </mat-card-actions>
+</mat-card>

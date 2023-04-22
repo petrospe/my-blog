@@ -10,6 +10,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +23,7 @@ import { PostService } from './services/post.service';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TruncatePipe } from './truncate.pipe';
 
 
 @NgModule({
@@ -28,7 +31,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     PostListComponent,
     CreatePostComponent,
-    EditPostComponent
+    EditPostComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
@@ -40,6 +44,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatExpansionModule,
+    MatTooltipModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,

@@ -12,6 +12,7 @@ export class PostListComponent implements OnInit {
 
   posts: Post[] = [];
   errorMessage!: string;
+  expanded = false;
 
   constructor(private postService: PostService) { }
 
@@ -49,5 +50,8 @@ export class PostListComponent implements OnInit {
     );
   }
   
+  onToggleExpanded(post: Post): void {
+    post.expanded = !post.expanded;
+  }
 
 }

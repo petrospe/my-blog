@@ -6,5 +6,6 @@ export interface Post {
     content: string;
     createdAt: Date;
     updatedAt: Date;
+    expanded?: boolean;
   }
   

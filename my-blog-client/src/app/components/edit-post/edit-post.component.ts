@@ -33,7 +33,8 @@ export class EditPostComponent implements OnInit {
     this.postService.updatePost(this.post).subscribe(
       (updatedPost: Post) => {
         console.log("Post updated successfully:", updatedPost);
-        this.router.navigate(['/posts', this.post._id, 'edit']);
+        // this.router.navigate(['/posts', this.post._id, 'edit']);
+        this.router.navigate(['/']);
       },
       (error: any) => {
         console.error("Error updating post:", error);

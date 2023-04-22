@@ -38,7 +38,6 @@ export class PostService {
       })
     );
   }
-  
 
   createPost(post: Post): Observable<Post> {
     return this.http.post<Post>(this.postsUrl, post);
