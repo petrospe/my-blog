@@ -8,10 +8,10 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav>
     <mat-nav-list>
-      <a mat-list-item routerLink="/posts" routerLinkActive="active-link">
+      <a mat-list-item routerLink="/posts" routerLinkActive="active-link" (click)="sidenav.close()">
         <mat-icon>list</mat-icon> Posts
       </a>
-      <a mat-list-item routerLink="/posts/create" routerLinkActive="active-link">
+      <a mat-list-item routerLink="/posts/create" routerLinkActive="active-link" (click)="sidenav.close()">
         <mat-icon>add</mat-icon> Create Post
       </a>
     </mat-nav-list>
